@@ -16,6 +16,12 @@ class HeaderExpectedItem:
         print(self.message)
         print(self.risk)
 
+class HeaderResultItem: 
+    def __init__(self, url, rawheader, headerexpecteditems):
+        self.url = url
+        self.rawheader = rawheader
+        self.headerexpecteditems = headerexpecteditems
+
 
 def valid_url(url):
     print('Validating Url: ' + url )
@@ -28,6 +34,10 @@ def scan_url(url, expectedHeaders):
     print('---Response---')
     print(response.status)
     print(response.headers)
+    for k  in response.headers:
+        print(k)
+        print(response.headers[k])
+    
 
 
 
@@ -58,8 +68,8 @@ def main():
         valid_url(args.URL)
         scan_url(args.URL, expectedheaders)
 
-        for item in expectedheaders:
-            print(item.printitem())
+        # for item in expectedheaders:
+        #     print(item.printitem())
 
 
     else:
